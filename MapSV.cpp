@@ -52,12 +52,34 @@ void MapSV::printList(){
 }
 bool MapSV::abcMenor(string s1, string s2){
 	int menorEspacio;
-	if(s1.size()>s2.size())menorEspacio = s2.size();
-	else menorEspacio = s1.size();
-	for(int i =0;i<menorEspacio;i++){
-		if(s1[i]<s2[i]) return true;
-		else if(s1[i]>s2[i]) return false;
-
+	int contador = 0;
+	if(s1.size() == s2.size()){
+		for(int i=0;i<s1.size();i++){
+			if(tolower(s1[i])< tolower(s2[i])) return true;
+			else if(tolower(s1[i])>tolower(s2[i])) return false;
+		}
 	}
+	else if(s1.size()>s2.size()){
+		menorEspacio = s2.size();
+		for(int i=0;i<menorEspacio;i++){
+			if(tolower(s1[i])< tolower(s2[i])) return true;
+			else if(tolower(s1[i])>tolower(s2[i])) return false;
+			else contador++;
+		}
+		if(contador == menorEspacio){
+			return false;
+		}
+	}
+	else{
+		menorEspacio = s1.size();
+		for(int i=0;i<menorEspacio;i++){
+			if(tolower(s1[i])< tolower(s2[i])) return true;
+			else if(tolower(s1[i])>tolower(s2[i])) return false;
+			else contador++;
+		}
+		if(contador == menorEspacio){
+			return true;
+		}
+	} 
 	return false;
 }

@@ -37,4 +37,6 @@ int main()
     sv->printList();
     if(sv->empty()) cout<<"ta vacio"<<endl;
     else cout<<" no ta vacio "<<endl;
+    if(sv->abcMenor("orro","orar"))cout<<"es menor"<<endl;
+    else cout<<"no es menor"<<endl;
 }
