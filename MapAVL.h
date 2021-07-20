@@ -25,15 +25,19 @@ struct Nodo{
 class MapAVL : public ADTMap{
 
 private:
-
+	Nodo * raiz;
 public:
 	MapAVL();
 	~MapAVL();
 	void insert(pair<string,int> p);
+	Nodo * insertRec(Nodo * raiz, Nodo * nuevo);
 	void erase(string s);
 	int at(string s);
 	int size();
 	bool empty();
 	void printList();
+	int getBalanceFactor(Nodo * r);
+	Nodo * rightRotate(Nodo * y);
+	Nodo * leftRotate(Nodo * x);
 };
 #endif
