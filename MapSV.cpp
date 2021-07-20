@@ -32,10 +32,29 @@ void MapSV::erase(string s){
 	return;
 }
 int MapSV::at(string s){
-	for(int i=0;i<v.size();i++){
-		if(v[i].first == s){
-			return v[i].second;
-		}
+	if(v.size()>0){
+		int primero =0;
+		int ultimo = v.size()-1;
+		int medio = (ultimo+primero)/2;
+		while (primero<=ultimo){
+        	if (abcMenor(v[medio].first,s)){
+            	primero=medio+1;
+        	} 
+        	else if (v[medio].first== s){
+            	cout<<" Se encontro la posición "<<endl;
+            	cout<<medio+1<<endl;
+            	return v[medio].second;
+            	break;
+        	}
+        	else {
+        	    ultimo = medio - 1;
+        	}
+        	medio = (primero+ultimo)/2;
+    	}
+    	if (primero>ultimo){
+    	    cout<<s<<" no se encontro";
+    	    return INT_MIN;
+    	}
 	}
 	return INT_MIN;
 }

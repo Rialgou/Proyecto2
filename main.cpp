@@ -38,5 +38,8 @@ int main()
     if(sv->empty()) cout<<"ta vacio"<<endl;
     else cout<<" no ta vacio "<<endl;
     if(sv->abcMenor("orro","orar"))cout<<"es menor"<<endl;
-    else cout<<"no es menor"<<endl;
+    else cout<<"no es menor"<<endl<<endl;
+    cout << sv->at("ola")<<endl;
+    cout << sv->at("juan")<<endl;
+    cout << sv->at("caupolican")<<endl;
 }
