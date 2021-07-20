@@ -8,7 +8,6 @@ class MapSV : public ADTMap{
 
 private:
 	vector<pair<string,int>> v;
-	int fill;
 public:
 	MapSV();
 	~MapSV();
@@ -18,5 +17,6 @@ public:
 	int size();
 	bool empty();
 	void printList();
+	bool abcMenor(string s1, string s2);
 };
 #endif

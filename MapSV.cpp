@@ -50,3 +50,14 @@ void MapSV::printList(){
 		cout<<v[i].first<<" - "<<v[i].second<<endl;
 	}
 }
+bool MapSV::abcMenor(string s1, string s2){
+	int menorEspacio;
+	if(s1.size()>s2.size())menorEspacio = s2.size();
+	else menorEspacio = s1.size();
+	for(int i =0;i<menorEspacio;i++){
+		if(s1[i]<s2[i]) return true;
+		else if(s1[i]>s2[i]) return false;
+
+	}
+	return false;
+}

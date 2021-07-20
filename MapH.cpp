@@ -2,7 +2,7 @@
 #include "MapH.h"
 using namespace std;
 
-MapDH::MapH(int N){
+MapH::MapH(int N){
 	v = vector<pair<string,int>>(N/2);
 	fill =0;
 	colisionesAt=0;

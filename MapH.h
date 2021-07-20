@@ -14,8 +14,8 @@ private:
 	int colisionesAt;
 	int colisionesInsert;
 public:
-	MapDH(int N);
-	~MapDH();
+	MapH(int N);
+	~MapH();
 	void insert(pair<string,int> p);
 	void erase(string s);
 	int at(string s);
