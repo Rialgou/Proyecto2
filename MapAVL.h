@@ -4,26 +4,36 @@
 #include "ADTMap.h"
 #include <vector>
 using namespace std;
+struct Nodo{
+	string clave;
+	int valor;
+	Nodo * derecho;
+	Nodo * izquierdo;
+	Nodo(){
+		clave = "";
+		valor = INT_MIN;
+		derecho = NULL;
+		izquierdo = NULL;
+	}
+	Nodo(pair<string,int> p){
+		clave = p.first;
+		valor = p.second;
+		derecho = NULL;
+		izquierdo = NULL;
+	}
+};
 class MapAVL : public ADTMap{
 
 private:
-	vector<pair<string,int>> v;
-	int fill;
-	int hashf(string s,int n);
-	int dHashf(string s,int n);
-	void rehash();
-	int colisionesAt;
-	int colisionesInsert;
+
 public:
-	MapDH(int N);
-	~MapDH();
+	MapAVL();
+	~MapAVL();
 	void insert(pair<string,int> p);
 	void erase(string s);
 	int at(string s);
 	int size();
 	bool empty();
 	void printList();
-	int getColisionesAt();
-	int getColisionesInsert();
 };
 #endif
