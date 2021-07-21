@@ -52,5 +52,6 @@ int main()
     avl->insert(make_pair("r",1251));
     avl->insert(make_pair("l",12415));
     avl->insert(make_pair("m",10));
+    avl->erase("l");
     avl->printAVL(avl->getRaiz(),5);
 }

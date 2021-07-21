@@ -30,17 +30,19 @@ public:
 	MapAVL();
 	~MapAVL();
 	void insert(pair<string,int> p);
-	Nodo * insertRec(Nodo * raiz, Nodo * nuevo);
+	Nodo * insertRec(Nodo * , Nodo * );
 	void erase(string );
+	Nodo * eraseRec(Nodo*, string);
 	int at(string );
 	int size();
 	bool empty();
-	void printAVL(Nodo * r, int space);
+	void printAVL(Nodo *, int);
 	int getBalanceFactor(Nodo * );
 	Nodo * rightRotate(Nodo * );
 	Nodo * leftRotate(Nodo * );
 	int height(Nodo *);
-	bool abcMenor(string s1, string s2);
+	bool abcMenor(string , string );
 	Nodo * getRaiz();
+	Nodo * minValueNodo(Nodo *);
 };
 #endif

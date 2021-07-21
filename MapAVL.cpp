@@ -11,13 +11,13 @@ void MapAVL::insert(pair<string,int> p){
 	Nodo * nuevo = new Nodo(make_pair(p.first,p.second));
 	raiz = insertRec(raiz, nuevo);
 }
-Nodo * MapAVL::insertRec(Nodo * r, Nodo * nuevo){
+Nodo * MapAVL::insertRec(Nodo * r,Nodo * nuevo){
 	if(r == NULL){
 		r = nuevo;
 		cout<<"se ingreso el nodo raiz"<<endl;
 		return r;
 	}
-	if(nuevo->clave == r->clave){
+	else if(nuevo->clave == r->clave){
 		cout<<"el elemento esta repetido"<<endl;
 		return r;
 	}
@@ -45,7 +45,37 @@ Nodo * MapAVL::insertRec(Nodo * r, Nodo * nuevo){
 	return r;
 }
 void MapAVL::erase(string s){
-
+	raiz = eraseRec(raiz,s);
+}
+Nodo * MapAVL::eraseRec(Nodo * r,string s){
+	if(r == NULL){
+		return NULL;
+	}
+	else if(s == r->clave){
+		if (r -> izquierdo == NULL){
+        	Nodo * aux = r -> derecho;
+        	delete r;
+        	return aux;
+      	}
+      	else if (r -> derecho == NULL){
+        	Nodo * aux = r -> izquierdo;
+        	delete r;
+        	return aux;
+      	}
+      	else{
+        	Nodo * aux = minValueNodo(r->derecho);;
+        	r -> clave = aux -> clave;
+        	r -> valor = aux -> valor; 
+        	r -> derecho = eraseRec(r -> derecho, aux -> clave); 
+      }
+	}
+	else if (abcMenor(s,r->clave)) {
+      r -> izquierdo = eraseRec(r -> izquierdo, s);
+    }
+    else{
+      r -> derecho = eraseRec(r -> derecho, s);
+    }
+    return r;
 }
 int MapAVL::at(string s){
 	return 0;
@@ -78,7 +108,7 @@ Nodo * MapAVL::rightRotate(Nodo * y){
 	Nodo * x = y -> izquierdo;
     Nodo * T2 = x -> derecho;
 
-    // Perform rotation  
+    // rotacion  
     x -> derecho = y;
     y -> izquierdo = T2;
 
@@ -88,7 +118,7 @@ Nodo * MapAVL::leftRotate(Nodo * x){
 	Nodo * y = x -> derecho;
     Nodo * T2 = y -> izquierdo;
 
-    // Perform rotation  
+    // rotacion 
     y -> izquierdo = x;
     x -> derecho = T2;
 
@@ -140,6 +170,14 @@ bool MapAVL::abcMenor(string s1, string s2){
 	} 
 	return false;
 }
-Nodo *MapAVL::getRaiz(){
+Nodo * MapAVL::getRaiz(){
 	return raiz;
+}
+Nodo * MapAVL::minValueNodo(Nodo * nodo){
+    Nodo * current = nodo;
+    /* se busca a la hoja mas externa de la izquierda */
+    while (current -> izquierdo != NULL) {
+      	current = current -> izquierdo;
+    }
+    return current;
 }
