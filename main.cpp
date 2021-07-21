@@ -59,4 +59,5 @@ int main()
     cout<<"ingrese el string a buscar: ";
     cin>>s;
     cout<<"el valor del string buscado es: "<< avl->at(s)<<endl;
+    delete(avl);
 }

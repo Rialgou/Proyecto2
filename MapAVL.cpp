@@ -6,6 +6,17 @@ MapAVL::MapAVL(){
 	raiz = NULL;
 }
 MapAVL::~MapAVL(){
+	destructorRec(raiz);
+	raiz = NULL;
+}
+void MapAVL::destructorRec(Nodo * r){
+    if (r == NULL){
+		return;
+    } 
+    destructorRec(r -> izquierdo);
+    destructorRec(r -> derecho);
+    delete r;
+    r = NULL;
 }
 void MapAVL::insert(pair<string,int> p){
 	Nodo * nuevo = new Nodo(make_pair(p.first,p.second));

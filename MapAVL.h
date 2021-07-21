@@ -45,5 +45,7 @@ public:
 	bool abcMenor(string , string );
 	Nodo * getRaiz();
 	Nodo * minValueNodo(Nodo *);
+	void destructorRec(Nodo * ); //(Left, Right, Root)
+  	
 };
 #endif
