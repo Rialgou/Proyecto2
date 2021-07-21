@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include "MapSV.h"
+#include "MapAVL.h"
 using namespace std;
 string random_string( size_t length )
 {
@@ -25,12 +26,12 @@ int main()
     if(s > i) cout<<s<<" es mayor que "<<i<<endl;
     else if(i<s) cout<<i<<" es mayor que "<<s<<endl;
     else cout<<"son iguales"<<endl;*/
-    MapSV * sv = new MapSV();
+    /*MapSV * sv = new MapSV();
     /*for(int i=0;i<1000;i++){
         sv->insert(make_pair(random_string(5),rand()%100+1));
 
     }*/
-    sv->erase("ola");
+   /* sv->erase("ola");
     sv->insert(make_pair("ola",22));
     sv->insert(make_pair("ola",25));
     sv->insert(make_pair("juan",1213));
@@ -41,5 +42,11 @@ int main()
     else cout<<"no es menor"<<endl<<endl;
     cout << sv->at("ola")<<endl;
     cout << sv->at("juan")<<endl;
-    cout << sv->at("caupolican")<<endl;
+    cout << sv->at("caupolican")<<endl;*/
+    MapAVL * avl = new MapAVL();
+    avl->insert(make_pair("eduardo",23));
+    avl->insert(make_pair("juan",213));
+    avl->insert(make_pair("edocaroe",13));
+    avl->insert(make_pair("eduardo",1231));
+    
 }

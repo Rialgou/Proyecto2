@@ -31,13 +31,15 @@ public:
 	~MapAVL();
 	void insert(pair<string,int> p);
 	Nodo * insertRec(Nodo * raiz, Nodo * nuevo);
-	void erase(string s);
-	int at(string s);
+	void erase(string );
+	int at(string );
 	int size();
 	bool empty();
 	void printList();
-	int getBalanceFactor(Nodo * r);
-	Nodo * rightRotate(Nodo * y);
-	Nodo * leftRotate(Nodo * x);
+	int getBalanceFactor(Nodo * );
+	Nodo * rightRotate(Nodo * );
+	Nodo * leftRotate(Nodo * );
+	int height(Nodo *);
+	bool abcMenor(string s1, string s2);
 };
 #endif
