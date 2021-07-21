@@ -78,7 +78,23 @@ Nodo * MapAVL::eraseRec(Nodo * r,string s){
     return r;
 }
 int MapAVL::at(string s){
-	return 0;
+	Nodo * numero = atRec(raiz,s);
+	if(numero!=NULL){
+		return numero->valor;
+	}
+	else return INT_MIN;
+}
+Nodo * MapAVL::atRec(Nodo* r,string s){
+	if (r == NULL || r -> clave == s)
+      return r;
+
+    else if (abcMenor(s, r->clave)) {
+      return atRec(r->izquierdo , s);
+    }
+    else{
+      return atRec(r->derecho, s);
+    }
+    return r;
 }
 int MapAVL::size(){
 	return 0;

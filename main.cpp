@@ -53,5 +53,10 @@ int main()
     avl->insert(make_pair("l",12415));
     avl->insert(make_pair("m",10));
     avl->erase("l");
+    avl->erase("p");
     avl->printAVL(avl->getRaiz(),5);
+    string s;
+    cout<<"ingrese el string a buscar: ";
+    cin>>s;
+    cout<<"el valor del string buscado es: "<< avl->at(s)<<endl;
 }

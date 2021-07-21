@@ -34,6 +34,7 @@ public:
 	void erase(string );
 	Nodo * eraseRec(Nodo*, string);
 	int at(string );
+	Nodo * atRec(Nodo*,string);
 	int size();
 	bool empty();
 	void printAVL(Nodo *, int);
