@@ -42,8 +42,18 @@ bool MapAVL::empty(){
 	if(raiz == NULL) return true;
 	else return false;
 }
-void MapAVL::printList(){
-
+void MapAVL::printAVL(Nodo *r,int space){
+	if(r == NULL){
+		return;
+	}
+	space +=10;
+	printAVL(r->derecho,space);
+	cout<<endl;
+	for(int i = 10;i< space;i++){
+		cout<<" ";
+	}
+	cout<<r->clave <<"-"<<r->valor<<endl;
+	printAVL(r->izquierdo,space);
 }
 int MapAVL::getBalanceFactor(Nodo * n){
 	if (n == NULL) return -1;
@@ -114,4 +124,7 @@ bool MapAVL::abcMenor(string s1, string s2){
 		}
 	} 
 	return false;
+}
+Nodo *MapAVL::getRaiz(){
+	return raiz;
 }

@@ -35,11 +35,12 @@ public:
 	int at(string );
 	int size();
 	bool empty();
-	void printList();
+	void printAVL(Nodo * r, int space);
 	int getBalanceFactor(Nodo * );
 	Nodo * rightRotate(Nodo * );
 	Nodo * leftRotate(Nodo * );
 	int height(Nodo *);
 	bool abcMenor(string s1, string s2);
+	Nodo * getRaiz();
 };
 #endif

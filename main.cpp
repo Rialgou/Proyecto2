@@ -48,5 +48,8 @@ int main()
     avl->insert(make_pair("juan",213));
     avl->insert(make_pair("edocaroe",13));
     avl->insert(make_pair("eduardo",1231));
-    
+    avl->insert(make_pair("eduardoo",1241));
+    avl->insert(make_pair("edocaroee",1251));
+    avl->insert(make_pair("edocaroeee",12415));
+    avl->printAVL(avl->getRaiz(),5);
 }
