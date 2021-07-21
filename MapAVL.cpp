@@ -27,6 +27,21 @@ Nodo * MapAVL::insertRec(Nodo * r, Nodo * nuevo){
 	else if(!abcMenor(nuevo->clave,r->clave)){
 		r->derecho = insertRec(r->derecho,nuevo);
 	}
+	int bf = getBalanceFactor(r);
+	if(bf>1 && abcMenor(nuevo->clave,r->izquierdo->clave)){
+		return rightRotate(r);
+	}
+	if(bf<-1 && !abcMenor(nuevo->clave,r->derecho->clave)){
+		return leftRotate(r);
+	}
+	if(bf >1 && !abcMenor(nuevo->clave,r->izquierdo->clave)){
+		r->izquierdo = leftRotate(r->izquierdo);
+		return rightRotate(r);
+	}
+	if(bf<-1 && abcMenor(nuevo->clave,r->derecho->clave)){
+		r->derecho = rightRotate(r->derecho);
+		return leftRotate(r);
+	}
 	return r;
 }
 void MapAVL::erase(string s){

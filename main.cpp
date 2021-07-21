@@ -44,12 +44,13 @@ int main()
     cout << sv->at("juan")<<endl;
     cout << sv->at("caupolican")<<endl;*/
     MapAVL * avl = new MapAVL();
-    avl->insert(make_pair("eduardo",23));
-    avl->insert(make_pair("juan",213));
-    avl->insert(make_pair("edocaroe",13));
-    avl->insert(make_pair("eduardo",1231));
-    avl->insert(make_pair("eduardoo",1241));
-    avl->insert(make_pair("edocaroee",1251));
-    avl->insert(make_pair("edocaroeee",12415));
+    avl->insert(make_pair("c",23));
+    avl->insert(make_pair("a",213));
+    avl->insert(make_pair("b",13));
+    avl->insert(make_pair("d",1231));
+    avl->insert(make_pair("q",1241));
+    avl->insert(make_pair("r",1251));
+    avl->insert(make_pair("l",12415));
+    avl->insert(make_pair("m",10));
     avl->printAVL(avl->getRaiz(),5);
 }
