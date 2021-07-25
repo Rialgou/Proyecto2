@@ -34,8 +34,8 @@ int MapSV::at(string s){
         	primero=medio+1;
     	} 
     	else if (v[medio].first== s){
-        	cout<<" Se encontro la posición "<<endl;
-        	cout<<medio+1<<endl;
+        	//cout<<" Se encontro la posición "<<endl;
+        	//cout<<medio+1<<endl;
         	return v[medio].second;
         	break;
     	}
@@ -43,7 +43,7 @@ int MapSV::at(string s){
 
     	medio = (primero+ultimo)/2;
 	}
-    cout<<s<<" no se encontro";
+    //cout<<s<<" no se encontro";
 	return INT_MIN;
 }
 int MapSV::size(){

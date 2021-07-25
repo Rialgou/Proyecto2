@@ -53,7 +53,7 @@ int MapH::at(string s){
 	for(int i=0;i<capacity;i++){
 		//se agrego la condicion en que la clave es vacia, donde se retornara antes
 		if(myarray[pos].first == "") {
-			cout<<"no encontrado por espacio vacio"<<endl;
+			//cout<<"no encontrado por espacio vacio"<<endl;
 			return -1;
 		}
 		if(s==myarray[pos].first) return myarray[pos].second;
@@ -61,7 +61,7 @@ int MapH::at(string s){
 		if(pos>=capacity) pos=pos-capacity;
 		atCont+=1;
 	}
-	cout<<"no encontrado"<<endl;
+	//cout<<"no encontrado"<<endl;
 	return -1;
 }
 void MapH::erase(string s){

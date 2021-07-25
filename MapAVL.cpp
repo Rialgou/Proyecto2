@@ -25,11 +25,11 @@ void MapAVL::insert(pair<string,int> p){
 Nodo * MapAVL::insertRec(Nodo * r,Nodo * nuevo){
 	if(r == NULL){
 		r = nuevo;
-		cout<<"se ingreso el nodo raiz"<<endl;
+		//cout<<"se ingreso el nodo raiz"<<endl;
 		return r;
 	}
 	else if(nuevo->clave == r->clave){
-		cout<<"el elemento esta repetido"<<endl;
+		//cout<<"el elemento esta repetido"<<endl;
 		return r;
 	}
 	else if(abcMenor(nuevo->clave,r->clave)){

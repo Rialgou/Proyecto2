@@ -42,62 +42,62 @@ int main(){
             start = clock();
             h->insert(p);
             stop = clock();
-            MapHins+=(stop-start)/CLOCKS_PER_SEC;
+            MapHins+=(double)(stop-start)/CLOCKS_PER_SEC;
             
             start = clock();
             a->insert(p);
             stop = clock();
-            AVLins+=(stop-start)/CLOCKS_PER_SEC;
+            AVLins+=(double)(stop-start)/CLOCKS_PER_SEC;
 
             start = clock();
             sv->insert(p);
             stop = clock();
-            SVins+=(stop-start)/CLOCKS_PER_SEC;
+            SVins+=(double)(stop-start)/CLOCKS_PER_SEC;
         }
         for(int j=0;j<n;j++){
             start = clock();
             h->at(s[j]);
             stop = clock();
-            MapHat1+=(stop-start)/CLOCKS_PER_SEC;
+            MapHat1+=(double)(stop-start)/CLOCKS_PER_SEC;
 
             start = clock();
             h->at("hola");
             stop = clock();
-            MapHat2+=(stop-start)/CLOCKS_PER_SEC;
+            MapHat2+=(double)(stop-start)/CLOCKS_PER_SEC;
             
             start = clock();
             a->at(s[j]);
             stop = clock();
-            AVLat1+=(stop-start)/CLOCKS_PER_SEC;
+            AVLat1+=(double)(stop-start)/CLOCKS_PER_SEC;
 
             start = clock();
             a->at("hola");
             stop = clock();
-            AVLat2+=(stop-start)/CLOCKS_PER_SEC;
+            AVLat2+=(double)(stop-start)/CLOCKS_PER_SEC;
             
             start = clock();
             sv->at(s[j]);
             stop = clock();
-            SVat1+=(stop-start)/CLOCKS_PER_SEC;   
+            SVat1+=(double)(stop-start)/CLOCKS_PER_SEC;   
 
             start = clock();
             sv->at("hola");
             stop = clock();
-            SVat2+=(stop-start)/CLOCKS_PER_SEC;   
+            SVat2+=(double)(stop-start)/CLOCKS_PER_SEC;   
         }
     }
     cout<<endl;
-    printf("MapH insert : %f\n\n",MapHins/rep );
-    printf("MapH at 1 : %f\n\n",MapHat1/rep );    
-    printf("MapH at 2 : %f\n\n",MapHat2/rep );
+    printf("MapH insert : %f\n\n",MapHins/(double)rep );
+    printf("MapH at 1 : %f\n\n",MapHat1/(double)rep );    
+    printf("MapH at 2 : %f\n\n",MapHat2/(double)rep );
 
-    printf("AVL insert : %f\n\n",AVLins/rep );
-    printf("AVL at 1 : %f\n\n",AVLat1/rep );    
-    printf("AVL at 2 : %f\n\n",AVLat2/rep );
+    printf("AVL insert : %f\n\n",AVLins/(double)rep );
+    printf("AVL at 1 : %f\n\n",AVLat1/(double)rep );    
+    printf("AVL at 2 : %f\n\n",AVLat2/(double)rep );
 
-    printf("SV insert : %f\n\n",SVins/rep );
-    printf("SV at 1 : %f\n\n",SVat1/rep );    
-    printf("SV at 2 : %f\n\n",SVat2/rep );
+    printf("SV insert : %f\n\n",SVins/(double)rep );
+    printf("SV at 1 : %f\n\n",SVat1/(double)rep );    
+    printf("SV at 2 : %f\n\n",SVat2/(double)rep );
 }
 /*
 int main()
