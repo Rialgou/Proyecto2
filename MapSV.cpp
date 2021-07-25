@@ -9,19 +9,13 @@ MapSV::~MapSV(){
 
 }
 void MapSV::insert(pair<string,int> p){
-	if(v.size()>0){
-		for(int i=0;i<v.size();i++){
-			if(v[i].first == p.first){
-				return;
-			}	
+	for(int i=0;i<v.size();i++){
+		if(v[i].first == p.first){
+			return;
 		}
-		v.push_back(make_pair(p.first,p.second));
-		sort(v.begin(),v.end());
-	}
-	else{
-		v.push_back(make_pair(p.first,p.second));
-		sort(v.begin(),v.end());
-	}
+	}	
+	v.push_back(make_pair(p.first,p.second));
+	sort(v.begin(),v.end());
 }
 void MapSV::erase(string s){
 	for(int i=0;i<v.size();i++){
@@ -32,30 +26,24 @@ void MapSV::erase(string s){
 	return;
 }
 int MapSV::at(string s){
-	if(v.size()>0){
-		int primero =0;
-		int ultimo = v.size()-1;
-		int medio = (ultimo+primero)/2;
-		while (primero<=ultimo){
-        	if (abcMenor(v[medio].first,s)){
-            	primero=medio+1;
-        	} 
-        	else if (v[medio].first== s){
-            	cout<<" Se encontro la posición "<<endl;
-            	cout<<medio+1<<endl;
-            	return v[medio].second;
-            	break;
-        	}
-        	else {
-        	    ultimo = medio - 1;
-        	}
-        	medio = (primero+ultimo)/2;
+	int primero =0;
+	int ultimo = v.size()-1;
+	int medio = (ultimo+primero)/2;
+	while (primero<=ultimo){
+    	if (abcMenor(v[medio].first,s)){
+        	primero=medio+1;
+    	} 
+    	else if (v[medio].first== s){
+        	cout<<" Se encontro la posición "<<endl;
+        	cout<<medio+1<<endl;
+        	return v[medio].second;
+        	break;
     	}
-    	if (primero>ultimo){
-    	    cout<<s<<" no se encontro";
-    	    return INT_MIN;
-    	}
+    	else ultimo = medio - 1;
+
+    	medio = (primero+ultimo)/2;
 	}
+    cout<<s<<" no se encontro";
 	return INT_MIN;
 }
 int MapSV::size(){
