@@ -26,26 +26,25 @@ class MapAVL : public ADTMap{
 
 private:
 	Nodo * raiz;
-public:
-	MapAVL();
-	~MapAVL();
-	void insert(pair<string,int> p);
 	Nodo * insertRec(Nodo * , Nodo * );
-	void erase(string );
 	Nodo * eraseRec(Nodo*, string);
-	int at(string );
 	Nodo * atRec(Nodo*,string);
-	int size();
-	bool empty();
-	void printAVL(Nodo *, int);
 	int getBalanceFactor(Nodo * );
 	Nodo * rightRotate(Nodo * );
 	Nodo * leftRotate(Nodo * );
 	int height(Nodo *);
 	bool abcMenor(string , string );
-	Nodo * getRaiz();
 	Nodo * minValueNodo(Nodo *);
-	void destructorRec(Nodo * ); //(Left, Right, Root)
-  	
+	void destructorRec(Nodo * );
+public:
+	MapAVL();
+	~MapAVL();
+	void insert(pair<string,int> p);
+	void erase(string );
+	int at(string );
+	int size();
+	bool empty();
+	void printAVL(Nodo *, int);
+	Nodo * getRaiz();
 };
 #endif

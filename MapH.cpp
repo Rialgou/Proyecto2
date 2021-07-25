@@ -35,7 +35,7 @@ void MapH::insert(pair<string,int> p){
 	int des=dhash(p.first);
 	for(int i=0;i<capacity;i++){
 		if(pos>=capacity) pos=pos-capacity;
-		if(myarray[pos].first==""){
+		if(myarray[pos].first==""||myarray[pos].first=="$"){
 			myarray[pos]=p;
 			mysize+=1;
 			break;
@@ -51,6 +51,11 @@ void MapH::insert(pair<string,int> p){
 int MapH::at(string s){
 	int pos=hash(s);
 	for(int i=0;i<capacity;i++){
+		//se agrego la condicion en que la clave es vacia, donde se retornara antes
+		if(myarray[pos].first == "") {
+			cout<<"no encontrado por espacio vacio"<<endl;
+			return -1;
+		}
 		if(s==myarray[pos].first) return myarray[pos].second;
 		pos+=dhash(s);
 		if(pos>=capacity) pos=pos-capacity;
@@ -63,7 +68,7 @@ void MapH::erase(string s){
 	int pos=hash(s);
 	for(int i=0;i<capacity;i++){
 		if(s==myarray[pos].first){
-			myarray[pos].first="";
+			myarray[pos].first="$";
 			myarray[pos].second=0;
 			mysize-=1;
 			break;
