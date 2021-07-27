@@ -9,18 +9,19 @@ MapSV::~MapSV(){
 
 }
 void MapSV::insert(pair<string,int> p){
-	for(int i=0;i<v.size();i++){
-		if(v[i].first == p.first){
+	for(int i=0;i<v.size();i++){//O(n)
+		if(v[i].first == p.first){//O(1)
 			return;
 		}
 	}	
-	v.push_back(make_pair(p.first,p.second));
-	sort(v.begin(),v.end());
+	v.push_back(make_pair(p.first,p.second));//O(1)
+	sort(v.begin(),v.end());//O(n*log(n))
 }
 void MapSV::erase(string s){
-	for(int i=0;i<v.size();i++){
-		if(v[i].first == s){
-			v.erase(v.begin()+i);
+	for(int i=0;i<v.size();i++){//O(n)
+		if(v[i].first == s){//O(1)
+			v.erase(v.begin()+i);//O(1) 
+			//luego move O(n) a peor caso
 		}
 	}	
 	return;
@@ -29,8 +30,8 @@ int MapSV::at(string s){
 	int primero =0;
 	int ultimo = v.size()-1;
 	int medio = (ultimo+primero)/2;
-	while (primero<=ultimo){
-    	if (abcMenor(v[medio].first,s)){
+	while (primero<=ultimo){//O(log(n)) busqueda binaria
+    	if (abcMenor(v[medio].first,s)){//O(10) caracteres
         	primero=medio+1;
     	} 
     	else if (v[medio].first== s){

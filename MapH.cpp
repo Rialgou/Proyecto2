@@ -31,50 +31,51 @@ int MapH::hash(string s){
 	return  (pos)%capacity; 
 }
 void MapH::insert(pair<string,int> p){
-	int pos=hash(p.first);
-	int des=dhash(p.first);
-	for(int i=0;i<capacity;i++){
-		if(pos>=capacity) pos=pos-capacity;
-		if(myarray[pos].first==""||myarray[pos].first=="$"){
+	int pos=hash(p.first);//O(1)
+	int des=dhash(p.first);//O(1)
+	for(int i=0;i<capacity;i++){//O(n)
+		if(pos>=capacity) pos=pos-capacity;//O(1)
+		if(myarray[pos].first==""||myarray[pos].first=="$"){//O(1)
 			myarray[pos]=p;
 			mysize+=1;
 			break;
 		}
-		else if(myarray[pos].first==p.first){
+		else if(myarray[pos].first==p.first){//O(1)
 			break;
 		}
 		pos+=des;
 		insCont+=1;
 	}
-	if(mysize>capacity/2) rehash();
+	if(mysize>capacity/2) rehash();//O(n)
 }
 int MapH::at(string s){
-	int pos=hash(s);
-	for(int i=0;i<capacity;i++){
-		//se agrego la condicion en que la clave es vacia, donde se retornara antes
-		if(myarray[pos].first == "") {
+	int pos=hash(s);//O(1)
+	for(int i=0;i<capacity;i++){//O(n)
+		//se agrego la condicion en que la clave es vacia "$", 
+		//no usada en el lab7 de esta forma se retornara antes
+		if(myarray[pos].first == "") {//O(1)
 			//cout<<"no encontrado por espacio vacio"<<endl;
 			return -1;
 		}
-		if(s==myarray[pos].first) return myarray[pos].second;
-		pos+=dhash(s);
-		if(pos>=capacity) pos=pos-capacity;
+		if(s==myarray[pos].first) return myarray[pos].second;//O(1)
+		pos+=dhash(s);//O(1)
+		if(pos>=capacity) pos=pos-capacity;//O(1)
 		atCont+=1;
 	}
 	//cout<<"no encontrado"<<endl;
 	return -1;
 }
 void MapH::erase(string s){
-	int pos=hash(s);
-	for(int i=0;i<capacity;i++){
-		if(s==myarray[pos].first){
+	int pos=hash(s);//O(1)
+	for(int i=0;i<capacity;i++){//O(n)
+		if(s==myarray[pos].first){//O(1)
 			myarray[pos].first="$";
 			myarray[pos].second=0;
 			mysize-=1;
 			break;
 		}
-		pos+=dhash(s);
-		if(pos>=capacity) pos=pos-capacity;
+		pos+=dhash(s);//O(1)
+		if(pos>=capacity) pos=pos-capacity;//O(1)
 	}
 }
 int MapH::size(){
@@ -87,16 +88,16 @@ bool MapH::empty(){
 void MapH::rehash(){
 	pair<string,int> *temparray=new pair<string,int>[mysize];
 	int i=0;int j=0;
-	while(i<mysize){//save
-		if(myarray[j].first!=""){
+	while(i<mysize){//save    O(n)
+		if(myarray[j].first!=""){//O(1)
 			temparray[i]=myarray[j];
 			i++;
 		}
 		j++;
 	}
 
-	capacity=capacity*2;//resize
-	for(int i=0;i<21;i++){
+	capacity=capacity*2;//resize  
+	for(int i=0;i<21;i++){//O(n)
 		if(capacity+15<cap[i-1]){
 			capacity=cap[i-1];
 			break;
@@ -108,7 +109,7 @@ void MapH::rehash(){
 	int size=mysize;
 	//insCont=0;
 	mysize=0;
-	for(int i=0;i<size;i++){//recover
+	for(int i=0;i<size;i++){//recover O(n)
 		insert(temparray[i]);
 	}
 	delete[] temparray;

@@ -21,7 +21,7 @@ int main(){
     int n;
     cout<<"ingrese la cantidad de claves"<<endl;
     cin >>n;
-    int rep =1;
+    int rep =100;
     clock_t start,stop;
     srand(time(NULL));
     //at1=busqueda de elemento existente, at2 busqueda de elemento no existente
@@ -30,6 +30,7 @@ int main(){
     double SVins=0,SVat1=0,SVat2=0;
 
     for(int i=0;i<rep;i++){
+        cout<<"ciclo: "<<i<<endl;
         MapH *h = new MapH(n);//hash
         MapAVL *a = new MapAVL();//AVL tree
         MapSV *sv = new MapSV();//sorted vector
@@ -88,16 +89,17 @@ int main(){
     }
     cout<<endl;
     printf("MapH insert : %f\n\n",MapHins/(double)rep );
-    printf("MapH at 1 : %f\n\n",MapHat1/(double)rep );    
-    printf("MapH at 2 : %f\n\n",MapHat2/(double)rep );
-
     printf("AVL insert : %f\n\n",AVLins/(double)rep );
-    printf("AVL at 1 : %f\n\n",AVLat1/(double)rep );    
-    printf("AVL at 2 : %f\n\n",AVLat2/(double)rep );
-
     printf("SV insert : %f\n\n",SVins/(double)rep );
+
+    printf("MapH at 1 : %f\n\n",MapHat1/(double)rep );    
+    printf("AVL at 1 : %f\n\n",AVLat1/(double)rep );    
     printf("SV at 1 : %f\n\n",SVat1/(double)rep );    
+
+    printf("MapH at 2 : %f\n\n",MapHat2/(double)rep );
+    printf("AVL at 2 : %f\n\n",AVLat2/(double)rep );
     printf("SV at 2 : %f\n\n",SVat2/(double)rep );
+
 }
 /*
 int main()
