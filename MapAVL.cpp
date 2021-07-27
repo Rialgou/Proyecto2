@@ -68,6 +68,7 @@ Nodo * MapAVL::insertRec(Nodo * r,Nodo * nuevo){
 	//es mayor que la clave del hijo izquierdo del nodo r en ese momento 
 	//entramos en este caso zig-zag  
 	if(bf >1 && !abcMenor(nuevo->clave,r->izquierdo->clave)){
+		//para los zig-zag haremos una rotacion doble
 		r->izquierdo = leftRotate(r->izquierdo);
 		return rightRotate(r);
 	}
@@ -85,34 +86,47 @@ void MapAVL::erase(string s){
 	raiz = eraseRec(raiz,s);
 }
 Nodo * MapAVL::eraseRec(Nodo * r,string s){
+	//si el nodo es nulo, se retorna NULL
 	if(r == NULL){
 		return NULL;
 	}
+	//si la clave buscada es igual a la clave del nodo actual
 	else if(s == r->clave){
+		//si el hijo izquierdo del nodo r es Nulo, creamos un nodo auxiliar que apunte al hijo
+		//derecho y eliminamos el nodo actual, retornando el nuevo nodo auxiliar creado
 		if (r -> izquierdo == NULL){
-        	Nodo * aux = r -> derecho;
-        	delete r;
-        	return aux;
-      	}
-      	else if (r -> derecho == NULL){
-        	Nodo * aux = r -> izquierdo;
-        	delete r;
-        	return aux;
-      	}
-      	else{
-        	Nodo * aux = minValueNodo(r->derecho);;
-        	r -> clave = aux -> clave;
-        	r -> valor = aux -> valor; 
-        	r -> derecho = eraseRec(r -> derecho, aux -> clave); 
-      }
-	}
-	else if (abcMenor(s,r->clave)) {
-      r -> izquierdo = eraseRec(r -> izquierdo, s);
+    	Nodo * aux = r -> derecho;
+      delete r;
+      return aux;
+		}
+		//si el hijo derecho del nodo r es Nulo, creamos un nodo auxiliar que apunte al hijo 
+		//izquierdo y eliminamos el nodo actual, retornando el nuevo nodo auxiliar creado
+		else if (r -> derecho == NULL){
+      Nodo * aux = r -> izquierdo;
+      delete r;
+      return aux;
     }
+    //para el caso en que r tenga ambos hijos con nodos se buscara un nodo auxiliar,
+    //que correspondera al nodo con clave menor en el subarbol derecho del nodo actual
+    //se copiaran la clave y el valor del nodo auxiliar encontrado y luego se eliminara 
+    //ese nodo que se uso como auxiliar(que corresponde al hijo izquierdo más bajo del hijo de la derecha)
     else{
-      r -> derecho = eraseRec(r -> derecho, s);
+      Nodo * aux = minValueNodo(r->derecho);;
+      r -> clave = aux -> clave;
+      r -> valor = aux -> valor; 
+      r -> derecho = eraseRec(r -> derecho, aux -> clave); 
     }
-    return r;
+	}
+	//si la clave buscada es menor que la clave del nodo actual, 
+	//buscar en el hijo izquierdo
+	else if (abcMenor(s,r->clave)) {
+    r -> izquierdo = eraseRec(r -> izquierdo, s);
+  }
+  //si la clave buscada es mayor que la calve del nodo actual,
+  //buscar en el hijo derecho
+  else{
+    r -> derecho = eraseRec(r -> derecho, s);
+  }
 }
 int MapAVL::at(string s){
 	//llama al metodo recursivo de at
@@ -241,10 +255,12 @@ Nodo * MapAVL::getRaiz(){
 	return raiz;
 }
 Nodo * MapAVL::minValueNodo(Nodo * nodo){
-    Nodo * current = nodo;
+		//creamos un nodo nav, que correspondera al nodo actual y sera con el que navegaremos
+    Nodo * nav = nodo;
     //se busca a la hoja mas externa de la izquierda 
-    while (current -> izquierdo != NULL) {
-      	current = current -> izquierdo;
+    while (nav -> izquierdo != NULL) {
+      	nav = nav -> izquierdo;
     }
-    return current;
+    //se retorna el nodo de menor valor
+    return nav;
 }
