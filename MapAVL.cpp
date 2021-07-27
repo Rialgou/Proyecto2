@@ -27,10 +27,10 @@ void MapAVL::insert(pair<string,int> p){
 	raiz = insertRec(raiz, nuevo);
 }
 Nodo * MapAVL::insertRec(Nodo * r,Nodo * nuevo){
-	//si no hay raiz, se crea
+	//si estamos en una hoja, se reemplaza por el nodo
 	if(r == NULL){
 		r = nuevo;
-		//cout<<"se ingreso el nodo raiz"<<endl;
+		//cout<<"se ingreso el nodo"<<endl;
 		return r;
 	}
 	//si la clave del nodo nuevo es igual a la clave en el nivel, se retorna la raiz
@@ -127,6 +127,7 @@ Nodo * MapAVL::eraseRec(Nodo * r,string s){
   else{
     r -> derecho = eraseRec(r -> derecho, s);
   }
+  return r;
 }
 int MapAVL::at(string s){
 	//llama al metodo recursivo de at
